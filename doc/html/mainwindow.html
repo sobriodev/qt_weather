@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- mainwindow.cpp -->
+  <title>MainWindow Class | QT weather app</title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader"></div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<li>MainWindow</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">MainWindow Class</h1>
+<!-- $$$MainWindow-brief -->
+<p>The <a href="mainwindow.html">MainWindow</a> class joins the GUI and the application logic <a href="#details">More...</a></p>
+<!-- @@@MainWindow -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;MainWindow&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="mainwindow-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="mainwindow.html#MainWindow">MainWindow</a></b>(QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="mainwindow.html#dtor.MainWindow">~MainWindow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="mainwindow.html#setTimerTimeout">setTimerTimeout</a></b>(int <i>timeout</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const int </td><td class="memItemRight bottomAlign"><b><a href="mainwindow.html#DefaultRefresh-var">DefaultRefresh</a></b> = 1000</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QString </td><td class="memItemRight bottomAlign"><b><a href="mainwindow.html#SendAllCommand-var">SendAllCommand</a></b></td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$MainWindow-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="mainwindow.html">MainWindow</a> class joins the GUI and the application logic</p>
+</div>
+<!-- @@@MainWindow -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$MainWindow[overload1]$$$MainWindowQWidget* -->
+<h3 class="fn" id="MainWindow"><a name="MainWindow"></a>MainWindow::<span class="name">MainWindow</span>(<span class="type">QWidget</span> *<i>parent</i> = nullptr)</h3>
+<p><a href="mainwindow.html">MainWindow</a> constructor with optional <i>parent</i> widget</p>
+<!-- @@@MainWindow -->
+<!-- $$$~MainWindow[overload1]$$$~MainWindow -->
+<h3 class="fn" id="dtor.MainWindow"><a name="dtor.MainWindow"></a>MainWindow::<span class="name">~MainWindow</span>()</h3>
+<p><a href="mainwindow.html">MainWindow</a> destructor</p>
+<!-- @@@~MainWindow -->
+<!-- $$$setTimerTimeout[overload1]$$$setTimerTimeoutint -->
+<h3 class="fn" id="setTimerTimeout"><a name="setTimerTimeout"></a><span class="type">void</span> MainWindow::<span class="name">setTimerTimeout</span>(<span class="type">int</span> <i>timeout</i>)</h3>
+<p>Set sensor data readout frequency. It is used for choosing USB data refresh time. The <i>timeout</i> parameter stores new timeout in milliseconds</p>
+<!-- @@@setTimerTimeout -->
+</div>
+<div class="vars">
+<h2>Member Variable Documentation</h2>
+<!-- $$$DefaultRefresh -->
+<h3 class="fn" id="DefaultRefresh-var"><a name="DefaultRefresh-var"></a>const <span class="type">int</span> MainWindow::<span class="name">DefaultRefresh</span> = 1000</h3>
+<p>@brief The variable stores default USB data refresh time</p>
+<!-- @@@DefaultRefresh -->
+<!-- $$$SendAllCommand -->
+<h3 class="fn" id="SendAllCommand-var"><a name="SendAllCommand-var"></a>const <span class="type">QString</span> MainWindow::<span class="name">SendAllCommand</span></h3>
+<p>Default command for sending all sensor data</p>
+<!-- @@@SendAllCommand -->
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>
+      Mateusz Kiełbasa, Maksymilian Hebda &#174; 2019 </p> </div>
+</body>
+</html>

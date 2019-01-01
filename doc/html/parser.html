@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- parser.cpp -->
+  <title>Parser Class | QT weather app</title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader"></div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<li>Parser</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Parser Class</h1>
+<!-- $$$Parser-brief -->
+<p>The Parser class provides a way to parse crude sensor data <a href="#details">More...</a></p>
+<!-- @@@Parser -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;Parser&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="parser-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="parser.html#Parser">Parser</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#parseSensorData">parseSensorData</a></b>(const QString &amp;<i>data</i>)</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#humidityChanged">humidityChanged</a></b>(double <i>humidity</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#pressureChanged">pressureChanged</a></b>(double <i>pressure</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#temperatureChanged">temperatureChanged</a></b>(double <i>temperature</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Parser-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Parser class provides a way to parse crude sensor data</p>
+</div>
+<!-- @@@Parser -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Parser[overload1]$$$ParserQObject* -->
+<h3 class="fn" id="Parser"><a name="Parser"></a>Parser::<span class="name">Parser</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>The parser class constructor with optional <i>parent</i> object</p>
+<!-- @@@Parser -->
+<!-- $$$humidityChanged[overload1]$$$humidityChangeddouble -->
+<h3 class="fn" id="humidityChanged"><a name="humidityChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">humidityChanged</span>(<span class="type">double</span> <i>humidity</i>)</h3>
+<p>The signal is emmited when humidity has changed. The <i>humidity</i> parameter holds the actual value</p>
+<!-- @@@humidityChanged -->
+<!-- $$$parseSensorData[overload1]$$$parseSensorDataconstQString& -->
+<h3 class="fn" id="parseSensorData"><a name="parseSensorData"></a><span class="type">void</span> Parser::<span class="name">parseSensorData</span>(const <span class="type">QString</span> &amp;<i>data</i>)</h3>
+<p>Parse crude sensor data. The <i>data</i> format is <b>T{value}|H{value}|P{value}</b>, where <b>{value}</b> is a placeholder for real double value. This function emits</p>
+<ul>
+<li><a href="parser.html#temperatureChanged">Parser::temperatureChanged</a>()</li>
+<li><a href="parser.html#humidityChanged">Parser::humidityChanged</a>()</li>
+<li><a href="parser.html#pressureChanged">Parser::pressureChanged</a>()</li>
+</ul>
+<!-- @@@parseSensorData -->
+<!-- $$$pressureChanged[overload1]$$$pressureChangeddouble -->
+<h3 class="fn" id="pressureChanged"><a name="pressureChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">pressureChanged</span>(<span class="type">double</span> <i>pressure</i>)</h3>
+<p>The signal is emmited when pressure has changed. The <i>pressure</i> parameter holds the actual value</p>
+<!-- @@@pressureChanged -->
+<!-- $$$temperatureChanged[overload1]$$$temperatureChangeddouble -->
+<h3 class="fn" id="temperatureChanged"><a name="temperatureChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">temperatureChanged</span>(<span class="type">double</span> <i>temperature</i>)</h3>
+<p>The signal is emmited when temperature has changed. The <i>temperature</i> parameter holds the actual value</p>
+<!-- @@@temperatureChanged -->
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>
+      Mateusz Kiełbasa, Maksymilian Hebda &#174; 2019 </p> </div>
+</body>
+</html>

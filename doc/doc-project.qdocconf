@@ -1,0 +1,52 @@
+# Define some default macros.
+include(compat.qdocconf)
+include(macros.qdocconf)
+
+# Uncomment this if you want to create manifest xml file for QtCreator.
+# This file will be used for generating example preview on welcome screen.
+#include(manifest-meta.qdocconf)
+
+# Is setting some ignores of uncommon C++ construnctions in Qt
+include(qt-cpp-ignore.qdocconf)
+
+# Add define which will be evaluated while parsing source code.
+include(qt-defines.qdocconf)
+
+# Set-up html template.
+include(qt-html-templates-offline.qdocconf)
+
+project = QT weather app
+
+sourcedirs += ../
+headerdirs += ../
+sourcedirs += ./
+headerdirs += ./
+
+imagedirs += ./images
+
+outputdir = ./html
+outputformats = HTML
+
+dita.metadata.default.author      = <Mateusz Kiełbasa, Maksymilian Hebda>
+dita.metadata.default.copyryear   = <2019>
+
+version             	= 
+versionsym              = 
+
+naturallanguage         = en_US
+outputencoding          = UTF-8
+sourceencoding          = UTF-8
+
+examples.fileextensions = "*.cpp *.h *.js *.xq *.svg *.xml *.ui *.qhp *.qhcp *.qml *.css"
+examples.imageextensions = "*.png *.jpg *.gif"
+
+headers.fileextensions  = "*.ch *.h *.h++ *.hh *.hpp *.hxx"
+sources.fileextensions  = "*.c++ *.cc *.cpp *.cxx *.mm *.qml *.qdoc"
+
+
+macro.raisedaster.HTML  = "<sup>*</sup>"
+
+syntaxhighlighting = true
+
+#include the external websites
+#sourcedirs += externalsites

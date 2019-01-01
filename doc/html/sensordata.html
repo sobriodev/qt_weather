@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- sensordata.cpp -->
+  <title>SensorData Class | QT weather app</title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader"></div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<li>SensorData</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SensorData Class</h1>
+<!-- $$$SensorData-brief -->
+<p>The <a href="sensordata.html">SensorData</a> class represents single data measurment <a href="#details">More...</a></p>
+<!-- @@@SensorData -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;SensorData&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="sensordata-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData">SensorData</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData-1">SensorData</a></b>(double <i>temperature</i>, double <i>humidity</i>, double <i>pressure</i>, QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getHumidity">getHumidity</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getPressure">getPressure</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getTemperature">getTemperature</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setHumidity">setHumidity</a></b>(double <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setPressure">setPressure</a></b>(double <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setTemperature">setTemperature</a></b>(double <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#toString">toString</a></b>() const</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$SensorData-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="sensordata.html">SensorData</a> class represents single data measurment</p>
+</div>
+<!-- @@@SensorData -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$SensorData[overload1]$$$SensorDataQObject* -->
+<h3 class="fn" id="SensorData"><a name="SensorData"></a>SensorData::<span class="name">SensorData</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>The default <a href="sensordata.html">SensorData</a> constructor sets all sensor data to zero. Optional <i>parent</i> object can be sent</p>
+<!-- @@@SensorData -->
+<!-- $$$SensorData$$$SensorDatadoubledoubledoubleQObject* -->
+<h3 class="fn" id="SensorData-1"><a name="SensorData-1"></a>SensorData::<span class="name">SensorData</span>(<span class="type">double</span> <i>temperature</i>, <span class="type">double</span> <i>humidity</i>, <span class="type">double</span> <i>pressure</i>, <span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>The Sensor data constructor initializes all values using <i>temperature</i>, <i>humidity</i> and <i>pressure</i> arguments. Also <i>parent</i> object can be sent</p>
+<!-- @@@SensorData -->
+<!-- $$$getHumidity[overload1]$$$getHumidity -->
+<h3 class="fn" id="getHumidity"><a name="getHumidity"></a><span class="type">double</span> SensorData::<span class="name">getHumidity</span>() const</h3>
+<p>Get current humidity</p>
+<!-- @@@getHumidity -->
+<!-- $$$getPressure[overload1]$$$getPressure -->
+<h3 class="fn" id="getPressure"><a name="getPressure"></a><span class="type">double</span> SensorData::<span class="name">getPressure</span>() const</h3>
+<p>Get current pressure</p>
+<!-- @@@getPressure -->
+<!-- $$$getTemperature[overload1]$$$getTemperature -->
+<h3 class="fn" id="getTemperature"><a name="getTemperature"></a><span class="type">double</span> SensorData::<span class="name">getTemperature</span>() const</h3>
+<p>Get current temperature</p>
+<!-- @@@getTemperature -->
+<!-- $$$setHumidity[overload1]$$$setHumiditydouble -->
+<h3 class="fn" id="setHumidity"><a name="setHumidity"></a><span class="type">void</span> SensorData::<span class="name">setHumidity</span>(<span class="type">double</span> <i>value</i>)</h3>
+<p>Set current humidity using <i>value</i> parameter</p>
+<!-- @@@setHumidity -->
+<!-- $$$setPressure[overload1]$$$setPressuredouble -->
+<h3 class="fn" id="setPressure"><a name="setPressure"></a><span class="type">void</span> SensorData::<span class="name">setPressure</span>(<span class="type">double</span> <i>value</i>)</h3>
+<p>Set current pressure using <i>value</i> parameter</p>
+<!-- @@@setPressure -->
+<!-- $$$setTemperature[overload1]$$$setTemperaturedouble -->
+<h3 class="fn" id="setTemperature"><a name="setTemperature"></a><span class="type">void</span> SensorData::<span class="name">setTemperature</span>(<span class="type">double</span> <i>value</i>)</h3>
+<p>Set current temperature using <i>value</i> parameter</p>
+<!-- @@@setTemperature -->
+<!-- $$$toString[overload1]$$$toString -->
+<h3 class="fn" id="toString"><a name="toString"></a><span class="type">QString</span> SensorData::<span class="name">toString</span>() const</h3>
+<p>Return string containing all sensor data. This is for testing purposes</p>
+<!-- @@@toString -->
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>
+      Mateusz Kiełbasa, Maksymilian Hebda &#174; 2019 </p> </div>
+</body>
+</html>

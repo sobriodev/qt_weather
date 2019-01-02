@@ -32,8 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    configureSerialPort();
     connectHandlers();
+    configureSerialPort();
 }
 
 /*!
@@ -66,7 +66,7 @@ void MainWindow::configureSerialPort()
     QString portname;
     const auto infos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &info : infos) {
-        if(info.serialNumber() == "NXP-77") {
+        if (info.serialNumber() == "NXP-77") {
             portname=info.portName();
             serial.setPortName(portname);
             if (serial.open(QIODevice::ReadWrite)) {

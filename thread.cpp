@@ -1,9 +1,13 @@
 #include "thread.h"
 
+/*!
+ * \class Thread
+ * \inmodule core
+ * \brief The Thread class provides a way to do some tasks parallel
+ */
 
 /*!
- * \brief Thread constructor
- * \param parent Parent object
+ * \brief Thread constructor with optional \a parent object
  */
 Thread::Thread(QObject *parent) : QThread(parent) {}
 
@@ -13,13 +17,13 @@ Thread::Thread(QObject *parent) : QThread(parent) {}
  */
 void Thread::run()
 {
-    while(isRunning()) {
+    while (isRunning()) {
         emit tick();
         msleep(1);
     }
 }
 
 /*!
- * \fn Thread::tick()
+ * \fn volid Thread::tick()
  * \brief The tick signal is emmited with 1ms frequency
  */

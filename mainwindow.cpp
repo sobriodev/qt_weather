@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QFile>
 
 /*!
  * \class MainWindow
@@ -14,7 +15,7 @@
 
 /*!
  * \variable MainWindow::DefaultRefresh
- * @brief The variable stores default USB data refresh time
+ * \brief The variable stores default USB data refresh time
  */
 
 /*!
@@ -22,6 +23,12 @@
  * \brief Default command for sending all sensor data
  */
 const QString MainWindow::SendAllCommand = "SD";
+
+/*!
+ * \variable MainWindow::JsonFilename
+ * \brief Default JSON filename
+ */
+const QString MainWindow::JsonFilename = "data.json";
 
 /*!
  * \brief MainWindow constructor with optional \a parent widget
@@ -34,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connectHandlers();
     configureSerialPort();
+    loadJsonData();
 }
 
 /*!
@@ -97,9 +105,26 @@ void MainWindow::connectHandlers()
     connect(&parser, &Parser::temperatureChanged, this, &MainWindow::onTemperatureChanged);
     connect(&parser, &Parser::pressureChanged, this, &MainWindow::onPressureChanged);
     connect(&parser, &Parser::humidityChanged, this, &MainWindow::onHumidityChanged);
+    connect(&parser, &Parser::allDataChanged, this, &MainWindow::onSensorDataChanged);
 
     /* Timer */
     connect(&timer, &QTimer::timeout, this, &MainWindow::onTimerTimeout);
+}
+
+void MainWindow::loadJsonData()
+{
+    QFile jsonFile(JsonFilename);
+    if (!jsonFile.open(QIODevice::ReadOnly)) {
+        qDebug() << "Cannot load JSON data";
+    } else {
+        QByteArray jsonData = jsonFile.readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+
+        if (jsonDoc.isEmpty())
+            qDebug() << "An Empty/invalid JSON";
+
+        storage.deserialize(jsonDoc.object());
+    }
 }
 
 /*!
@@ -108,8 +133,9 @@ void MainWindow::connectHandlers()
  */
 void MainWindow::onThreadTick()
 {
-    if (serial.size())
+    if (serial.size()) {
         parser.parseSensorData(serial.readAll());
+    }
 }
 
 /*!
@@ -125,28 +151,57 @@ void MainWindow::onTimerTimeout()
 
 /*!
  * \internal
- * \brief Temperature chaged slot. This is used for presenting and storing actual values. The \a temperature parameter holds new value
+ * \brief Temperature changed slot. This is used for presenting and storing actual values. The \a temperature parameter holds new value
  */
 void MainWindow::onTemperatureChanged(double temperature)
 {
-    sensorData.setTemperature(temperature);
+    Q_UNUSED(temperature);
 }
 
 /*!
  * \internal
- * \brief Humidity chaged slot. This is used for presenting and storing actual values. The \a humidity parameter holds new value
+ * \brief Humidity changed slot. This is used for presenting and storing actual values. The \a humidity parameter holds new value
  */
 void MainWindow::onHumidityChanged(double humidity)
 {
-    sensorData.setHumidity(humidity);
+    Q_UNUSED(humidity)
 }
 
 /*!
  * \internal
- * \brief Pressure chaged slot. This is used for presenting and storing actual values. The \a pressure parameter holds new value
+ * \brief Pressure changed slot. This is used for presenting and storing actual values. The \a pressure parameter holds new value
  */
 void MainWindow::onPressureChanged(double pressure)
 {
-    sensorData.setPressure(pressure);
-    qDebug() << sensorData.toString();
+    Q_UNUSED(pressure)
+}
+
+void MainWindow::onSensorDataChanged(const SensorData data)
+{
+    storage.append(data);
+    QJsonObject obj;
+    storage.serialize(obj);
+    qDebug() << obj;
+    storage.deleteOldReadouts(0, QTime(0, 2, 0));
+}
+
+/*!
+ * \brief Overrided closeEvent function used to save JSON data. The \a event arguement carries event data
+ */
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QFile jsonFile(JsonFilename);
+    if (!jsonFile.open(QIODevice::WriteOnly)) {
+        qDebug() << "Cannot write JSON data";
+    } else {
+        qDebug() << "Saving JSON data";
+
+        QJsonObject jsonObj;
+        storage.serialize(jsonObj);
+        QJsonDocument jsonDoc(jsonObj);
+        jsonFile.resize(0);
+        jsonFile.write(jsonDoc.toJson());
+    }
+
+    event->accept();
 }

@@ -18,6 +18,7 @@
 <h3><a name="toc">Contents</a></h3>
 <ul>
 <li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
 <li class="level1"><a href="#details">Detailed Description</a></li>
 </ul>
 </div>
@@ -34,15 +35,31 @@
 <a name="public-functions"></a>
 <h2 id="public-functions">Public Functions</h2>
 <div class="table"><table class="alignedsummary">
-<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData">SensorData</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
-<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData-1">SensorData</a></b>(double <i>temperature</i>, double <i>humidity</i>, double <i>pressure</i>, QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData">SensorData</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#SensorData-1">SensorData</a></b>(double <i>temperature</i>, double <i>humidity</i>, double <i>pressure</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#calcBioConds">calcBioConds</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#calcCloudiness">calcCloudiness</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QPair&lt;double, bool&gt; </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#calcLunarProperties">calcLunarProperties</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#calcPerseivedTemperature">calcPerseivedTemperature</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#deserialize">deserialize</a></b>(const QJsonObject &amp;<i>input</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QDateTime </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getDateTime">getDateTime</a></b>() const</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getHumidity">getHumidity</a></b>() const</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getPressure">getPressure</a></b>() const</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#getTemperature">getTemperature</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#serialize">serialize</a></b>(QJsonObject &amp;<i>output</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setDateTime">setDateTime</a></b>(const QDateTime &amp;<i>value</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setHumidity">setHumidity</a></b>(double <i>value</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setPressure">setPressure</a></b>(double <i>value</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#setTemperature">setTemperature</a></b>(double <i>value</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#toString">toString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#operator-eq-eq">operator==</a></b>(const SensorData &amp;<i>other</i>) const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const QString </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#DateFormat-var">DateFormat</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QString </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#TimeFormat-var">TimeFormat</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> SensorData </td><td class="memItemRight bottomAlign"><b><a href="sensordata.html#fromJson">fromJson</a></b>(const QJsonObject &amp;<i>input</i>)</td></tr>
 </table></div>
 <a name="details"></a>
 <!-- $$$SensorData-description -->
@@ -53,14 +70,42 @@
 <!-- @@@SensorData -->
 <div class="func">
 <h2>Member Function Documentation</h2>
-<!-- $$$SensorData[overload1]$$$SensorDataQObject* -->
-<h3 class="fn" id="SensorData"><a name="SensorData"></a>SensorData::<span class="name">SensorData</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
-<p>The default <a href="sensordata.html">SensorData</a> constructor sets all sensor data to zero. Optional <i>parent</i> object can be sent</p>
+<!-- $$$SensorData[overload1]$$$SensorData -->
+<h3 class="fn" id="SensorData"><a name="SensorData"></a>SensorData::<span class="name">SensorData</span>()</h3>
+<p>The default <a href="sensordata.html">SensorData</a> constructor sets all sensor data to zero.</p>
 <!-- @@@SensorData -->
-<!-- $$$SensorData$$$SensorDatadoubledoubledoubleQObject* -->
-<h3 class="fn" id="SensorData-1"><a name="SensorData-1"></a>SensorData::<span class="name">SensorData</span>(<span class="type">double</span> <i>temperature</i>, <span class="type">double</span> <i>humidity</i>, <span class="type">double</span> <i>pressure</i>, <span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
-<p>The Sensor data constructor initializes all values using <i>temperature</i>, <i>humidity</i> and <i>pressure</i> arguments. Also <i>parent</i> object can be sent</p>
+<!-- $$$SensorData$$$SensorDatadoubledoubledouble -->
+<h3 class="fn" id="SensorData-1"><a name="SensorData-1"></a>SensorData::<span class="name">SensorData</span>(<span class="type">double</span> <i>temperature</i>, <span class="type">double</span> <i>humidity</i>, <span class="type">double</span> <i>pressure</i>)</h3>
+<p>The Sensor data constructor initializes all values using <i>temperature</i>, <i>humidity</i> and <i>pressure</i> arguments.</p>
 <!-- @@@SensorData -->
+<!-- $$$calcBioConds[overload1]$$$calcBioConds -->
+<h3 class="fn" id="calcBioConds"><a name="calcBioConds"></a><span class="type">bool</span> SensorData::<span class="name">calcBioConds</span>() const</h3>
+<p>Calculate biometeorological conditions and returns it TODO implement method</p>
+<!-- @@@calcBioConds -->
+<!-- $$$calcCloudiness[overload1]$$$calcCloudiness -->
+<h3 class="fn" id="calcCloudiness"><a name="calcCloudiness"></a><span class="type">double</span> SensorData::<span class="name">calcCloudiness</span>() const</h3>
+<p>Calculate cloudiness and returns it TODO implement method</p>
+<!-- @@@calcCloudiness -->
+<!-- $$$calcLunarProperties[overload1]$$$calcLunarProperties -->
+<h3 class="fn" id="calcLunarProperties"><a name="calcLunarProperties"></a><span class="type">QPair</span>&lt;<span class="type">double</span>, <span class="type">bool</span>&gt; SensorData::<span class="name">calcLunarProperties</span>() const</h3>
+<p>Calculate lunar phase and increasing/decreasing rate and returns them TODO implement method</p>
+<!-- @@@calcLunarProperties -->
+<!-- $$$calcPerseivedTemperature[overload1]$$$calcPerseivedTemperature -->
+<h3 class="fn" id="calcPerseivedTemperature"><a name="calcPerseivedTemperature"></a><span class="type">double</span> SensorData::<span class="name">calcPerseivedTemperature</span>() const</h3>
+<p>Calculate perseived temperature and returns it TODO implement method</p>
+<!-- @@@calcPerseivedTemperature -->
+<!-- $$$deserialize[overload1]$$$deserializeconstQJsonObject& -->
+<h3 class="fn" id="deserialize"><a name="deserialize"></a><span class="type">void</span> SensorData::<span class="name">deserialize</span>(const <span class="type">QJsonObject</span> &amp;<i>input</i>)</h3>
+<p>Deserialize sensor readout from JSON object. Input JSON is <i>input</i></p>
+<!-- @@@deserialize -->
+<!-- $$$fromJson[overload1]$$$fromJsonconstQJsonObject& -->
+<h3 class="fn" id="fromJson"><a name="fromJson"></a><code>[static] </code><span class="type"><a href="sensordata.html#SensorData">SensorData</a></span> SensorData::<span class="name">fromJson</span>(const <span class="type">QJsonObject</span> &amp;<i>input</i>)</h3>
+<p>Create <a href="sensordata.html">SensorData</a> object using serialized JSON data. Input JSON is <i>input</i></p>
+<!-- @@@fromJson -->
+<!-- $$$getDateTime[overload1]$$$getDateTime -->
+<h3 class="fn" id="getDateTime"><a name="getDateTime"></a><span class="type">QDateTime</span> SensorData::<span class="name">getDateTime</span>() const</h3>
+<p>Get measurement date</p>
+<!-- @@@getDateTime -->
 <!-- $$$getHumidity[overload1]$$$getHumidity -->
 <h3 class="fn" id="getHumidity"><a name="getHumidity"></a><span class="type">double</span> SensorData::<span class="name">getHumidity</span>() const</h3>
 <p>Get current humidity</p>
@@ -73,6 +118,14 @@
 <h3 class="fn" id="getTemperature"><a name="getTemperature"></a><span class="type">double</span> SensorData::<span class="name">getTemperature</span>() const</h3>
 <p>Get current temperature</p>
 <!-- @@@getTemperature -->
+<!-- $$$serialize[overload1]$$$serializeQJsonObject& -->
+<h3 class="fn" id="serialize"><a name="serialize"></a><span class="type">void</span> SensorData::<span class="name">serialize</span>(<span class="type">QJsonObject</span> &amp;<i>output</i>) const</h3>
+<p>Serialize sensor readout as JSON object. Output JSON is <i>output</i></p>
+<!-- @@@serialize -->
+<!-- $$$setDateTime[overload1]$$$setDateTimeconstQDateTime& -->
+<h3 class="fn" id="setDateTime"><a name="setDateTime"></a><span class="type">void</span> SensorData::<span class="name">setDateTime</span>(const <span class="type">QDateTime</span> &amp;<i>value</i>)</h3>
+<p>Set measurement date using <i>value</i> parameter</p>
+<!-- @@@setDateTime -->
 <!-- $$$setHumidity[overload1]$$$setHumiditydouble -->
 <h3 class="fn" id="setHumidity"><a name="setHumidity"></a><span class="type">void</span> SensorData::<span class="name">setHumidity</span>(<span class="type">double</span> <i>value</i>)</h3>
 <p>Set current humidity using <i>value</i> parameter</p>
@@ -89,6 +142,21 @@
 <h3 class="fn" id="toString"><a name="toString"></a><span class="type">QString</span> SensorData::<span class="name">toString</span>() const</h3>
 <p>Return string containing all sensor data. This is for testing purposes</p>
 <!-- @@@toString -->
+<!-- $$$operator==[overload1]$$$operator==constSensorData& -->
+<h3 class="fn" id="operator-eq-eq"><a name="operator-eq-eq"></a><span class="type">bool</span> SensorData::<span class="name">operator==</span>(const <span class="type"><a href="sensordata.html#SensorData">SensorData</a></span> &amp;<i>other</i>) const</h3>
+<p>Equality operator. It returns true if <i>other</i> date is the same, false otherwise</p>
+<!-- @@@operator== -->
+</div>
+<div class="vars">
+<h2>Member Variable Documentation</h2>
+<!-- $$$DateFormat -->
+<h3 class="fn" id="DateFormat-var"><a name="DateFormat-var"></a>const <span class="type">QString</span> SensorData::<span class="name">DateFormat</span></h3>
+<p>Date format used in application</p>
+<!-- @@@DateFormat -->
+<!-- $$$TimeFormat -->
+<h3 class="fn" id="TimeFormat-var"><a name="TimeFormat-var"></a>const <span class="type">QString</span> SensorData::<span class="name">TimeFormat</span></h3>
+<p>Time format used in application</p>
+<!-- @@@TimeFormat -->
 </div>
 </div>
 </div>

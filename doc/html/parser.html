@@ -19,6 +19,7 @@
 <ul>
 <li class="level1"><a href="#public-functions">Public Functions</a></li>
 <li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
 <li class="level1"><a href="#details">Detailed Description</a></li>
 </ul>
 </div>
@@ -41,9 +42,15 @@
 <a name="signals"></a>
 <h2 id="signals">Signals</h2>
 <div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#allDataChanged">allDataChanged</a></b>(SensorData <i>data</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#humidityChanged">humidityChanged</a></b>(double <i>humidity</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#pressureChanged">pressureChanged</a></b>(double <i>pressure</i>)</td></tr>
 <tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="parser.html#temperatureChanged">temperatureChanged</a></b>(double <i>temperature</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const int </td><td class="memItemRight bottomAlign"><b><a href="parser.html#SensorsCount-var">SensorsCount</a></b> = 3</td></tr>
 </table></div>
 <a name="details"></a>
 <!-- $$$Parser-description -->
@@ -58,17 +65,22 @@
 <h3 class="fn" id="Parser"><a name="Parser"></a>Parser::<span class="name">Parser</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
 <p>The parser class constructor with optional <i>parent</i> object</p>
 <!-- @@@Parser -->
+<!-- $$$allDataChanged[overload1]$$$allDataChangedSensorData -->
+<h3 class="fn" id="allDataChanged"><a name="allDataChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">allDataChanged</span>(<span class="type"><a href="sensordata.html">SensorData</a></span> <i>data</i>)</h3>
+<p>The signal is emmited when all data has changed. The <i>data</i> pressure parameter holds the actual object</p>
+<!-- @@@allDataChanged -->
 <!-- $$$humidityChanged[overload1]$$$humidityChangeddouble -->
 <h3 class="fn" id="humidityChanged"><a name="humidityChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">humidityChanged</span>(<span class="type">double</span> <i>humidity</i>)</h3>
 <p>The signal is emmited when humidity has changed. The <i>humidity</i> parameter holds the actual value</p>
 <!-- @@@humidityChanged -->
 <!-- $$$parseSensorData[overload1]$$$parseSensorDataconstQString& -->
 <h3 class="fn" id="parseSensorData"><a name="parseSensorData"></a><span class="type">void</span> Parser::<span class="name">parseSensorData</span>(const <span class="type">QString</span> &amp;<i>data</i>)</h3>
-<p>Parse crude sensor data. The <i>data</i> format is <b>T{value}|H{value}|P{value}</b>, where <b>{value}</b> is a placeholder for real double value. This function emits</p>
+<p>Parse crude sensor data. The function will fill in <i>data</i> if all data is gained. The <i>data</i> format is <b>T{value}|H{value}|P{value}</b>, where <b>{value}</b> is a placeholder for real sensor value. This function emits</p>
 <ul>
 <li><a href="parser.html#temperatureChanged">Parser::temperatureChanged</a>()</li>
 <li><a href="parser.html#humidityChanged">Parser::humidityChanged</a>()</li>
 <li><a href="parser.html#pressureChanged">Parser::pressureChanged</a>()</li>
+<li><a href="parser.html#allDataChanged">Parser::allDataChanged</a>()</li>
 </ul>
 <!-- @@@parseSensorData -->
 <!-- $$$pressureChanged[overload1]$$$pressureChangeddouble -->
@@ -79,6 +91,13 @@
 <h3 class="fn" id="temperatureChanged"><a name="temperatureChanged"></a><code>[signal] </code><span class="type">void</span> Parser::<span class="name">temperatureChanged</span>(<span class="type">double</span> <i>temperature</i>)</h3>
 <p>The signal is emmited when temperature has changed. The <i>temperature</i> parameter holds the actual value</p>
 <!-- @@@temperatureChanged -->
+</div>
+<div class="vars">
+<h2>Member Variable Documentation</h2>
+<!-- $$$SensorsCount -->
+<h3 class="fn" id="SensorsCount-var"><a name="SensorsCount-var"></a>const <span class="type">int</span> Parser::<span class="name">SensorsCount</span> = 3</h3>
+<p>This variable holds the variable stores number of sensors used</p>
+<!-- @@@SensorsCount -->
 </div>
 </div>
 </div>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- datastorage.cpp -->
+  <title>DataStorage Class | QT weather app</title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader"></div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<li>DataStorage</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DataStorage Class</h1>
+<!-- $$$DataStorage-brief -->
+<p>The <a href="datastorage.html">DataStorage</a> class stores all readouts data and manages serializing and deserializing them <a href="#details">More...</a></p>
+<!-- @@@DataStorage -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;DataStorage&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="datastorage-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#SaveInterval-enum">SaveInterval</a></b> { Each5Min, Each10Min, Each30Min, EachHour }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#DataStorage">DataStorage</a></b>(int <i>validM</i> = DefaultValidMinutes)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#append">append</a></b>(const SensorData &amp;<i>readout</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#deleteOldReadouts">deleteOldReadouts</a></b>(int <i>days</i>, const QTime &amp;<i>timeSub</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#deserialize">deserialize</a></b>(const QJsonObject &amp;<i>input</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#serialize">serialize</a></b>(QJsonObject &amp;<i>output</i>) const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const int </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#DefaultValidMinutes-var">DefaultValidMinutes</a></b> = Each30Min</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QString </td><td class="memItemRight bottomAlign"><b><a href="datastorage.html#JsonKey-var">JsonKey</a></b></td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$DataStorage-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="datastorage.html">DataStorage</a> class stores all readouts data and manages serializing and deserializing them</p>
+</div>
+<!-- @@@DataStorage -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$SaveInterval$$$Each5Min$$$Each10Min$$$Each30Min$$$EachHour -->
+<h3 class="fn" id="SaveInterval-enum"><a name="SaveInterval-enum"></a>enum DataStorage::<span class="name">SaveInterval</span></h3>
+<p>This enum is placeholder when using <a href="datastorage.html">DataStorage</a> constructor</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code>DataStorage::Each5Min</code></td><td class="topAlign tblval"><code>5</code></td><td class="topAlign">Save readouts each 5 minutes</td></tr>
+<tr><td class="topAlign"><code>DataStorage::Each10Min</code></td><td class="topAlign tblval"><code>10</code></td><td class="topAlign">Save readouts each 10 minutes</td></tr>
+<tr><td class="topAlign"><code>DataStorage::Each30Min</code></td><td class="topAlign tblval"><code>30</code></td><td class="topAlign">Save readouts each 30 minutes</td></tr>
+<tr><td class="topAlign"><code>DataStorage::EachHour</code></td><td class="topAlign tblval"><code>60</code></td><td class="topAlign">Save readouts each one hour</td></tr>
+</table></div>
+<!-- @@@SaveInterval -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$DataStorage[overload1]$$$DataStorageint -->
+<h3 class="fn" id="DataStorage"><a name="DataStorage"></a>DataStorage::<span class="name">DataStorage</span>(<span class="type">int</span> <i>validM</i> = DefaultValidMinutes)</h3>
+<p>The <a href="datastorage.html">DataStorage</a> class constructor. The <i>validM</i> parameter is used to set data saving interval (in minutes). Correct interval configurations are:</p>
+<ul>
+<li><b>validM &gt;= 10 AND validM &lt;= 5</b> Save data with <b>[currentTime] % [validM]</b> interval. For example setting <i>validM</i> to 20 will cause data saving when 00, 20, 40 minutes are reached</li>
+<li><b>validM = 60</b> Save data when next fully hour is reached</li>
+</ul>
+<!-- @@@DataStorage -->
+<!-- $$$append[overload1]$$$appendconstSensorData& -->
+<h3 class="fn" id="append"><a name="append"></a><span class="type">void</span> DataStorage::<span class="name">append</span>(const <span class="type"><a href="sensordata.html">SensorData</a></span> &amp;<i>readout</i>)</h3>
+<p>Save data readout using <i>readout</i> argument. Only valid readouts are saved</p>
+<!-- @@@append -->
+<!-- $$$deleteOldReadouts[overload1]$$$deleteOldReadoutsintconstQTime& -->
+<h3 class="fn" id="deleteOldReadouts"><a name="deleteOldReadouts"></a><span class="type">void</span> DataStorage::<span class="name">deleteOldReadouts</span>(<span class="type">int</span> <i>days</i>, const <span class="type">QTime</span> &amp;<i>timeSub</i>)</h3>
+<p>Delete old readouts from storage. The cricital delete date is built from <i>days</i> and <i>timeSub</i> arguments. For example setting <i>days</i> argument to <b>5</b> and <i>timeSub</i> to <b>1 hour, 31 minutes and 5 seconds</b> deletes all readouts older or equal 5 days, 1 hour, 31 minutes and 5 seconds from now</p>
+<!-- @@@deleteOldReadouts -->
+<!-- $$$deserialize[overload1]$$$deserializeconstQJsonObject& -->
+<h3 class="fn" id="deserialize"><a name="deserialize"></a><span class="type">void</span> DataStorage::<span class="name">deserialize</span>(const <span class="type">QJsonObject</span> &amp;<i>input</i>)</h3>
+<p>Deserialize Storage from JSON object where <i>input</i> stores serialized JSON data</p>
+<!-- @@@deserialize -->
+<!-- $$$serialize[overload1]$$$serializeQJsonObject& -->
+<h3 class="fn" id="serialize"><a name="serialize"></a><span class="type">void</span> DataStorage::<span class="name">serialize</span>(<span class="type">QJsonObject</span> &amp;<i>output</i>) const</h3>
+<p>Serialize Storage data. The <i>output</i> argument is an output JSON object</p>
+<!-- @@@serialize -->
+</div>
+<div class="vars">
+<h2>Member Variable Documentation</h2>
+<!-- $$$DefaultValidMinutes -->
+<h3 class="fn" id="DefaultValidMinutes-var"><a name="DefaultValidMinutes-var"></a>const <span class="type">int</span> DataStorage::<span class="name">DefaultValidMinutes</span> = Each30Min</h3>
+<p>This variable holds the variable stores default saving minutes</p>
+<!-- @@@DefaultValidMinutes -->
+<!-- $$$JsonKey -->
+<h3 class="fn" id="JsonKey-var"><a name="JsonKey-var"></a>const <span class="type">QString</span> DataStorage::<span class="name">JsonKey</span></h3>
+<p>This variable holds the variable stores default JSON key used to serialize storage</p>
+<!-- @@@JsonKey -->
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <p>
+      Mateusz Kiełbasa, Maksymilian Hebda &#174; 2019 </p> </div>
+</body>
+</html>

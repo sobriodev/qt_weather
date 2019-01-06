@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     thread.cpp \
     sensordata.cpp \
-    parser.cpp
+    parser.cpp \
+    datastorage.cpp
 
 HEADERS += \
         mainwindow.h \
     thread.h \
     sensordata.h \
-    parser.h
+    parser.h \
+    datastorage.h
 
 FORMS += \
         mainwindow.ui
@@ -44,3 +46,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
